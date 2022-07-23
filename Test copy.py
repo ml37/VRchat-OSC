@@ -15,6 +15,6 @@ if __name__ == "__main__":
   client = udp_client.SimpleUDPClient(args.ip, args.port)
 
 time.sleep(1)
-client.send_message("/avatar/parameters/VRCEmote", 1)
-time.sleep(1)
-client.send_message("/avatar/parameters/VRCEmote", 0)
+client.send_message("/avatar/parameters/SunGlasses", True)
+time.sleep(5)
+client.send_message("/avatar/parameters/SunGlasses", False)
