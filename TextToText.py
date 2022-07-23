@@ -1,7 +1,8 @@
 import argparse
 import random
 import time
-
+import os
+import sys
 from pythonosc import udp_client
 
 if __name__ == "__main__":
@@ -14,9 +15,11 @@ if __name__ == "__main__":
 
   client = udp_client.SimpleUDPClient(args.ip, args.port)
 
-
-client.send_message("/avatar/parameters/Textchat", 11)
-time.sleep(1)
+'''int askinputvalue 0~32'''
+while True:
+    UserInput =  input("Please input the value of the parameter: ")
+    UserInput = int(UserInput)
+    client.send_message("/avatar/parameters/Textchat", UserInput)
 '''time.sleep(1)
 client.send_message("/avatar/parameters/Textchat", 2)
 time.sleep(1)
