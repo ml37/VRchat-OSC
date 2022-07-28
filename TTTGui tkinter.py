@@ -28,6 +28,7 @@ def selectemotional(num):
     args = parser.parse_args()
     client = udp_client.SimpleUDPClient(args.ip, args.port)
     client.send_message("/avatar/parameters/GestureR", num+1)
+    client.send_message("/avatar/parameters/GestureLeft", num+1)
 
 root = Tk() 
 root.title("Text to Emotion")
