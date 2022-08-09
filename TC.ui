@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>800</width>
-    <height>600</height>
+    <height>800</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -79,8 +79,8 @@
    <widget class="QSpinBox" name="sb_y">
     <property name="geometry">
      <rect>
-      <x>290</x>
-      <y>330</y>
+      <x>150</x>
+      <y>390</y>
       <width>42</width>
       <height>22</height>
      </rect>
@@ -102,14 +102,33 @@
    <widget class="QLabel" name="lbl_y">
     <property name="geometry">
      <rect>
-      <x>300</x>
-      <y>310</y>
+      <x>160</x>
+      <y>370</y>
       <width>56</width>
       <height>12</height>
      </rect>
     </property>
     <property name="text">
      <string>y</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lbl_img">
+    <property name="geometry">
+     <rect>
+      <x>230</x>
+      <y>10</y>
+      <width>500</width>
+      <height>500</height>
+     </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Box</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <property name="text">
+     <string/>
     </property>
    </widget>
   </widget>

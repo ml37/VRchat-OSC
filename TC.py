@@ -17,9 +17,10 @@ import time
 import os
 import sys
 from pythonosc import udp_client
+from tkinter import *
 form_class = uic.loadUiType("TC.ui")[0]
 
-
+root = Tk()
 class WindowClass(QMainWindow, form_class) :
     def __init__(self) :
         super().__init__()
@@ -28,6 +29,7 @@ class WindowClass(QMainWindow, form_class) :
         self.sb_y.setValue(0)
         self.sb_x.valueChanged.connect(self.change_x)
         self.sb_y.valueChanged.connect(self.change_y)
+        self.img_load()
     def change_x(self) :
         num = self.sb_x.value()
         self.lbl_x.setText(str(self.sb_x.value()))
@@ -50,6 +52,11 @@ class WindowClass(QMainWindow, form_class) :
         args = parser.parse_args()
         client = udp_client.SimpleUDPClient(args.ip, args.port)
         client.send_message("/avatar/parameters/TCY", num)
+    '''def img_load(self):
+        image_data = PhotoImage('D:\git\VRCSDK3_Koyuki\Assets\Koyuki\TTT system\TC100_2000.png')
+        self.qPixmapWebVar = QPixmap()
+        self.qPixmapWebVar.loadFromData(image_data)'''
+
         
 if __name__ == "__main__" :
     parser = argparse.ArgumentParser()
