@@ -53,6 +53,33 @@ def TC_Y():
         with open(TC_path + "\Y\Y" + str(i) + ".anim", 'w') as f:
             f.write(filedata)
     os.remove("Y.anim")
-set_TC()
+'''set_TC()
 TC_X()
-TC_Y()
+TC_Y()'''
+def guid_collect():
+    print("guid_collect")
+    '''read xx.anime.meta and search guid in file'''
+    os.chdir(TC_path)
+    for i in range(1,x_size+1):
+        with open(TC_path + "\X\X" + str(i) + ".anim.meta", 'r') as f:
+            filedata = f.readlines()
+        for line in filedata:
+            if "guid" in line:
+                guid = line.split(":")[1]
+                guid = guid.replace("\n", "")
+                print(f'X{i} : {guid}')
+                break
+    print('@'*50)
+    for i in range(1,y_size+1):
+        with open(TC_path + "\Y\Y" + str(i) + ".anim.meta", 'r') as f:
+            filedata = f.readlines()
+        for line in filedata:
+            if "guid" in line:
+                guid = line.split(":")[1]
+                guid = guid.replace("\n", "")
+                print(f'Y{i} : {guid}')
+                break
+
+
+
+guid_collect()
