@@ -29,7 +29,6 @@ class WindowClass(QMainWindow, form_class) :
         self.sb_y.setValue(0)
         self.sb_x.valueChanged.connect(self.change_x)
         self.sb_y.valueChanged.connect(self.change_y)
-        self.img_load()
     def change_x(self) :
         num = self.sb_x.value()
         self.lbl_x.setText(str(self.sb_x.value()))
