@@ -51,10 +51,11 @@ class WindowClass(QMainWindow, form_class) :
         args = parser.parse_args()
         client = udp_client.SimpleUDPClient(args.ip, args.port)
         client.send_message("/avatar/parameters/TCY", num)
-    '''def img_load(self):
-        image_data = PhotoImage('D:\git\VRCSDK3_Koyuki\Assets\Koyuki\TTT system\TC100_2000.png')
-        self.qPixmapWebVar = QPixmap()
-        self.qPixmapWebVar.loadFromData(image_data)'''
+    def img_load(self):
+        if os.path.isfile('D:\git\VRCSDK3_Koyuki\Assets\Koyuki\TTT system\TC100_2000.png') == True:
+            image_data = PhotoImage('D:\git\VRCSDK3_Koyuki\Assets\Koyuki\TTT system\TC100_2000.png')
+            self.qPixmapWebVar = QPixmap()
+            self.qPixmapWebVar.loadFromData(image_data)
 
         
 if __name__ == "__main__" :
