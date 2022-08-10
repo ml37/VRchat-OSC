@@ -61,6 +61,13 @@ for i in range(10):
         buttons[i][j].place(y=(9 - i)*70 , x=j*70)
 OnRadiobutton = Radiobutton(root, text="On", value=1, command=lambda: on())
 OffRadiobutton = Radiobutton(root, text="Off", value=0, command=lambda: off())
+buttons2 = [[0 for x in range(10)] for y in range(10)]
+for i in range(10):
+    for j in range(10):
+        buttons2[i][j] = Button(root, text=f"{j+i*10+1}", width=8, height=4, command=lambda i=i, j=j: change(i, j))
+        buttons2[i][j].place(y=(9 - i)*70 , x=j*70 + 720)
+OnRadiobutton = Radiobutton(root, text="On", value=1, command=lambda: on())
+OffRadiobutton = Radiobutton(root, text="Off", value=0, command=lambda: off())
 OnRadiobutton.place(y=700, x=100)
 OffRadiobutton.place(y=700, x=200)
 mainloop()
@@ -80,3 +87,4 @@ if __name__ == "__main__":
       ('127.0.0.1', '9001'), dispatcher)
   print("Serving on {}".format(server.server_address))
   server.serve_forever()
+  ###code must be translate from tkinter to pyqt
