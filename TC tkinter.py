@@ -37,22 +37,22 @@ def off():
         args = parser.parse_args()
         client = udp_client.SimpleUDPClient(args.ip, args.port)
         client.send_message("/avatar/parameters/TextchatOnOff", False)
-def OnOffCheck(unused_addr, args, volume):
-        try:
-                print(volume)
-        except ValueError: pass
-
-def print_compute_handler(unused_addr, args, volume):
-  try:
-    print("[{0}] ~ {1}".format(args[0], args[1](volume)))
-  except ValueError: pass
+def img_load():
+        if os.path.isfile('D:\git\VRCSDK3_Koyuki\Assets\Koyuki\TTT system\TC100_2000.png') == True:
+                img_bg = PhotoImage(file="D:\git\VRCSDK3_Koyuki\Assets\Koyuki\TTT system\TC100_2000.png")
+                canvas.create_image(0,0, anchor=NW, image=img_bg)
+def OnOffCheck(unused_addr, args, Volume):
+        print('on off check')
+def TCXCheck():
+        print('TCX')
+def TCYCheck():
+        print('TCY')
 root = Tk() 
 root.title("Text to Emotion")
 root.geometry("800x800")
 canvas = Canvas(root, width = 700, height = 700) 
 canvas.place(x=0, y=0)
-#img = PhotoImage(file="D:\git\VRCSDK3_Koyuki\Assets\Koyuki\TTT system\TC100_2000.png")
-#canvas.create_image(0,0, anchor=NW, image=img)
+
 
 buttons = [[0 for x in range(10)] for y in range(10)]
 for i in range(10):
@@ -73,11 +73,10 @@ if __name__ == "__main__":
   args = parser.parse_args()
 
   dispatcher = dispatcher.Dispatcher()
-  dispatcher.map("/TextchatOnOff", OnOffCheck, )
+  dispatcher.map("/TextchatOnOff", OnOffCheck)
   dispatcher.map("/TCX", TCXCheck)
   dispatcher.map("/TCY", TCYCheck)
-
   server = osc_server.ThreadingOSCUDPServer(
-      (args.ip, args.port), dispatcher)
+      ('127.0.0.1', '9001'), dispatcher)
   print("Serving on {}".format(server.server_address))
   server.serve_forever()
