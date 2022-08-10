@@ -9,6 +9,8 @@ TC_path = 'D:\git\VRCSDK3_Koyuki\Assets\Koyuki\TTT system'
 cd = os.getcwd()
 x_size = 10
 y_size = 10
+objname = "TC_main"
+Eobjname = "TC_effect"
 def reset_TC():
     print("reset_TC")
     os.chdir(TC_path)
@@ -36,6 +38,7 @@ def TC_X():
         filedata = filedata.replace('(ST.x)', str(x_size * 0.01))
         filedata = filedata.replace('(ST.y)', str(y_size * 0.01))
         filedata = filedata.replace('(ST.z)', str((i-1) * 0.1))
+        filedata = filedata.replace('(objname)', objname)
         with open(TC_path + "\X\X" + str(i) + ".anim", 'w') as f:
             f.write(filedata)
     os.remove("X.anim")
@@ -50,6 +53,7 @@ def TC_Y():
         filedata = filedata.replace('(ST.x)', str(x_size * 0.01))
         filedata = filedata.replace('(ST.y)', str(y_size * 0.01))
         filedata = filedata.replace('(ST.w)', str((i-1) * 0.1))
+        filedata = filedata.replace('(objname)', objname)
         with open(TC_path + "\Y\Y" + str(i) + ".anim", 'w') as f:
             f.write(filedata)
     os.remove("Y.anim")
@@ -79,7 +83,42 @@ def guid_collect():
                 guid = guid.replace("\n", "")
                 print(f'Y{i} : {guid}')
                 break
-
-
-
-guid_collect()
+def set_TC_E():
+    copyfile(cd + "\XE.anim", TC_path + "\X_E\XE.anim")
+    copyfile(cd + "\YE.anim", TC_path + "\Y_E\YE.anim")
+def TC_XE():
+    print("TC_X_E")
+    os.chdir(TC_path + "\X_E")
+    for i in range(1,x_size+1):
+        copyfile("XE.anim", TC_path + "\X_E\XE" + str(i) + ".anim")
+        with open(TC_path + "\X_E\XE" + str(i) + ".anim", 'r') as f:
+            filedata = f.read()
+        filedata = filedata.replace('(namename)', 'XE'+str(i))
+        filedata = filedata.replace('(ST.x)', str(x_size * 0.01))
+        filedata = filedata.replace('(ST.y)', str(y_size * 0.01))
+        filedata = filedata.replace('(ST.z)', str((i-1) * 0.1))
+        filedata = filedata.replace('(objname)', Eobjname)
+        with open(TC_path + "\X_E\XE" + str(i) + ".anim", 'w') as f:
+            f.write(filedata)
+    os.remove("XE.anim")
+def TC_YE():
+    print("TC_Y_E")
+    os.chdir(TC_path + "\Y_E")
+    for i in range(1,y_size+1):
+        copyfile("YE.anim", TC_path + "\Y_E\YE" + str(i) + ".anim")
+        with open(TC_path + "\Y_E\YE" + str(i) + ".anim", 'r') as f:
+            filedata = f.read()
+        filedata = filedata.replace('(namename)', 'YE'+str(i))
+        filedata = filedata.replace('(ST.x)', str(x_size * 0.01))
+        filedata = filedata.replace('(ST.y)', str(y_size * 0.01))
+        filedata = filedata.replace('(ST.w)', str((i-1) * 0.1))
+        filedata = filedata.replace('(objname)', Eobjname)
+        with open(TC_path + "\Y_E\YE" + str(i) + ".anim", 'w') as f:
+            f.write(filedata)
+    os.remove("YE.anim")
+set_TC_E()
+set_TC()
+TC_XE()
+TC_YE()
+TC_X()
+TC_Y()
